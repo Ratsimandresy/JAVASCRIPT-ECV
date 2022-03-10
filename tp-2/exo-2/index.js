@@ -1,15 +1,12 @@
-const ul = document.querySelector("ul");
+const liElements = document.querySelectorAll("li");
 
-children = ul.children;
-
-const moveToTop = (el, arr) => {
-  for (let i = 0; i < arr; i++) {
-    const item = array[i];
-  }
-  arr.unshift(el);
-  return arr;
+const moveToTop = (e) => {
+  const li = e.target;
+  let parent = li.parentNode;
+  let clickedLi = parent.removeChild(li);
+  parent.prepend(clickedLi);
 };
 
-moveToTop(children[3], children);
-
-console.log(children);
+liElements.forEach((li) => {
+  li.onclick = moveToTop;
+});
