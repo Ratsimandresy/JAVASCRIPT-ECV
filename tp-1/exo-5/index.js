@@ -1,3 +1,6 @@
-// const pElements = document.querySelectorAll("p");
+const pElements = document.querySelectorAll("p");
 
-// console.log(pElements.length);
+pElements.forEach((p) => {
+  let parent = p.parentNode;
+  parent.removeChild(p);
+});

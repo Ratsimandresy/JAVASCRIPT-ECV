@@ -7,7 +7,7 @@ const increaseWidth = (e) => {
   let nextSibling = e.target.nextSibling.nextSibling;
   let previousSibling = e.target.previousSibling.previousSibling;
 
-  console.log(nextSibling.style.width);
+  console.log(nextSibling);
   //   let nextSiblingWidth = nextSibling.offsetWidth;
   //   let previousSiblingWidth = previousSibling.offsetWidth;
 
