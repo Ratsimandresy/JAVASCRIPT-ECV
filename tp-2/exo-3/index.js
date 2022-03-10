@@ -1,23 +1,24 @@
 const images = document.querySelectorAll("img");
 
 const increaseWidth = (e) => {
-  let width = e.target.offsetWidth;
-  let height = e.target.offsetHeight;
+  let img = e.target;
+  let width = img.offsetWidth;
 
-  let nextSibling = e.target.nextSibling.nextSibling;
-  let previousSibling = e.target.previousSibling.previousSibling;
+  if (img.nextSibling.nextSibling) {
+    let nextSibling = img.nextSibling.nextSibling;
+    let nextSiblingWidth = nextSibling.offsetWidth;
 
-  console.log(nextSibling);
-  //   let nextSiblingWidth = nextSibling.offsetWidth;
-  //   let previousSiblingWidth = previousSibling.offsetWidth;
-
-  if (nextSibling) {
-    e.target.style.width = `${width * 1.2}px`;
-    // nextSibling.style.width = `${nextSiblingWidth - nextSiblingWidth * 0.2}px`;
+    nextSibling.style.width = `${nextSiblingWidth - nextSiblingWidth * 0.2}px`;
   }
+  if (img.previousSibling.previousSibling) {
+    let previousSibling = img.previousSibling.previousSibling;
+    let previousSiblingWidth = previousSibling.offsetWidth;
 
-  //   e.target.style.width = `${width * 1.2}px`;
-  //   e.target.style.height = `${height * 1.2}px`;
+    previousSibling.style.width = `${
+      previousSiblingWidth - previousSiblingWidth * 0.2
+    }px`;
+  }
+  img.style.width = `${width * 1.2}px`;
 };
 
 images.forEach((el) => {
