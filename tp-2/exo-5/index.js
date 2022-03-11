@@ -6,9 +6,6 @@ divElements.forEach((div) => {
 });
 
 const zoomOut = (e) => {
-  let width = e.target.offsetWidth;
-  let height = e.target.offsetHeight;
-
   e.target.style.width = `300px`;
   e.target.style.height = `200px`;
 };
