@@ -1,5 +1,4 @@
 window.onload = () => {
-  let divElements = [];
   const body = document.getElementsByTagName("body")[0];
 
   const randomNumberInInterval = (min, max) =>
