@@ -20,5 +20,5 @@ const zoomImage = (e) => {
 
 images.forEach((img) => {
   img.onmouseover = zoomImage;
-  images.onmouseleave = zoomOut;
+  img.onmouseleave = zoomOut;
 });

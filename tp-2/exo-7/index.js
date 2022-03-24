@@ -3,6 +3,7 @@ const elements = document.body.querySelectorAll("*");
 const clickEvent = new MouseEvent("onclick");
 
 const removeElement = (e) => {
+  e.stopPropagation();
   e.preventDefault();
   let parent = e.target.parentNode;
   parent.removeChild(e.target);

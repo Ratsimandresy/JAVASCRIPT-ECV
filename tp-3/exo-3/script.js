@@ -1,4 +1,5 @@
 const body = document.getElementsByTagName("body")[0];
+const head = document.getElementsByTagName("head")[0];
 
 const randomNumberInInterval = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
@@ -18,3 +19,23 @@ for (let i = 0; i < randomNumberBetween5and15; i++) {
 }
 
 body.appendChild(fragment);
+
+head.appendChild(
+  Object.assign(document.createElement("style"), {
+    textContent: ".red {background-color: red !important;}",
+  })
+);
+
+const divElements = document.querySelectorAll("div");
+
+const getCurrentColor = (e) => (currentColor = e.target.style.backgroundColor);
+let currentColor;
+
+const toggleColorRed = (e) => {
+  e.target.classList.toggle("red");
+};
+
+divElements.forEach((div) => {
+  div.setAttribute("onclick", "toggleColorRed(event)");
+  div.onclick = toggleColorRed;
+});
