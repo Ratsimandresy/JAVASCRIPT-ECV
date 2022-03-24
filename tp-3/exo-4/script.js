@@ -6,7 +6,6 @@ document.onkeydown = (e) => {
   el.className = "square";
   el.textContent = `${e.key}`;
   container.appendChild(el);
-  console.log(containerChild);
   if (containerChild.length > 5) {
     container.firstChild.remove();
   }
