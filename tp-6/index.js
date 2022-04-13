@@ -1,3 +1,4 @@
+// EXO 1
 // utilities ---------------------
 const vowels = "aeuioy";
 const vowelRegex = new RegExp(`[${vowels}]`, "gi");
@@ -169,3 +170,66 @@ const person2 = {
 // console.log(fiscalCode(person1)); //"DBTMTT00A01"
 
 // console.log(fiscalCode(person2)); //"YUXHLN50T41"
+
+// -----------------------------------------------------------------------------------------
+// EXO 2
+const obj1 = {
+  a: [{ x: 2 }, { y: 4 }],
+  b: 1,
+};
+const obj2 = {
+  a: { z: 5 },
+  b: [2, 3],
+  c: "foo",
+};
+const obj3 = {
+  c: ["bar", "baz"],
+  d: 3,
+};
+
+const merge = (...objects) => {
+  let mergedObjects;
+
+  let allKeys = objects.reduce((acc, cur) => {
+    return (acc = [...new Set([...acc, ...Object.keys(cur)])].sort());
+  }, []);
+
+  mergedObjects = objects.reduce((mergedObjs, currentObj) => {
+    for (const key of allKeys) {
+      const currentHasKey = Object.hasOwnProperty.call(currentObj, key);
+      const mergedHasKey = Object.hasOwnProperty.call(mergedObjs, key);
+      let currentValue = currentObj[key];
+      let mergedValue = mergedObjs[key];
+
+      if (currentHasKey && mergedHasKey) {
+        console.log("line 202 both have => ", key, currentValue, mergedValue);
+        if (Array.isArray(currentValue)) {
+          mergedValue = currentValue.push(mergedValue);
+        }
+        if (Array.isArray(mergedValue)) {
+          mergedValue.push(currentValue);
+        }
+        if (Array.isArray(mergedValue) && Array.isArray(currentValue)) {
+          mergedValue = [...mergedValue, ...currentValue];
+        }
+      }
+      if (currentHasKey && !mergedHasKey) {
+        console.log("line 205 current have =>", key, currentValue);
+        mergedObjs[key] = currentValue;
+      }
+      if (!currentHasKey && mergedHasKey) {
+        console.log("line 208 current doesn't have =>", key, mergedValue);
+        mergedObjs[key] = mergedValue;
+      }
+      if (!currentHasKey && !mergedHasKey) {
+        console.log("line 210 both doesn't have =>", key);
+      }
+    }
+
+    return mergedObjs;
+  });
+  console.log(mergedObjects);
+  return mergedObjects;
+};
+
+merge(obj1, obj2, obj3);
